@@ -6,15 +6,15 @@ import { motion } from "framer-motion";
 
 export default function FeatureGrid() {
   return (
-    <section className="relative w-full py-24 px-4 bg-gradient-to-b from-white to-blue-50 dark:from-black dark:to-gray-900 overflow-hidden">
-      {/* Animated floating shape */}
+    <section className="relative w-full py-28 px-4 bg-gradient-to-b from-white to-blue-50 dark:from-black dark:to-gray-900 overflow-hidden">
+      {/* Enhanced animated floating shape */}
       <motion.div
-        className="absolute right-10 top-10 w-32 h-32 bg-gradient-to-br from-blue-200 to-pink-200 rounded-full blur-2xl opacity-30 z-0"
-        animate={{ y: [0, -20, 0], x: [0, 20, 0] }}
-        transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
+        className="absolute right-10 top-10 w-44 h-44 bg-gradient-to-br from-blue-200 to-pink-200 rounded-full blur-3xl opacity-40 z-0"
+        animate={{ y: [0, -32, 0], x: [0, 32, 0] }}
+        transition={{ repeat: Infinity, duration: 14, ease: "easeInOut" }}
       />
       <motion.div
-        className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 relative z-10"
+        className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 relative z-10"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}

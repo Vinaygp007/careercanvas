@@ -361,133 +361,129 @@ const questions = [
 		);
 	}
 
-	return (
+		return (
 			<main className="relative min-h-screen w-full flex flex-col items-center bg-gradient-to-b from-[#eaf3fc] to-white dark:from-[#0a1a2f] dark:to-black overflow-x-hidden">
 				{/* Animated background gradient */}
 				<motion.div
 					className="absolute inset-0 w-full h-full bg-gradient-to-tr from-blue-100/40 via-pink-100/30 to-purple-100/40 dark:from-blue-900/30 dark:via-pink-900/20 dark:to-purple-900/30 blur-2xl z-0 pointer-events-none"
 					animate={{ opacity: [0.7, 1, 0.7] }}
-					transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
+					transition={{ repeat: Infinity, duration: 12, ease: 'easeInOut' }}
 				/>
 				{/* Floating animated shapes for wow effect */}
 				<motion.div
-					className="absolute left-10 top-10 w-32 h-32 bg-gradient-to-tr from-blue-400 to-purple-300 rounded-full blur-2xl opacity-40 animate-pulse z-0"
+					className="absolute left-2 top-2 sm:left-10 sm:top-10 w-20 h-20 sm:w-32 sm:h-32 bg-gradient-to-tr from-blue-400 to-purple-300 rounded-full blur-2xl opacity-40 animate-pulse z-0"
 					animate={{ y: [0, 30, 0], x: [0, 20, 0] }}
-					transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
+					transition={{ repeat: Infinity, duration: 8, ease: 'easeInOut' }}
 				/>
 				<motion.div
-					className="absolute right-10 bottom-10 w-40 h-40 bg-gradient-to-br from-pink-400 to-blue-300 rounded-full blur-2xl opacity-30 animate-pulse z-0"
+					className="absolute right-2 bottom-2 sm:right-10 sm:bottom-10 w-24 h-24 sm:w-40 sm:h-40 bg-gradient-to-br from-pink-400 to-blue-300 rounded-full blur-2xl opacity-30 animate-pulse z-0"
 					animate={{ y: [0, -30, 0], x: [0, -20, 0] }}
-					transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
+					transition={{ repeat: Infinity, duration: 10, ease: 'easeInOut' }}
 				/>
 				{/* Sticky header with animated progress circles */}
 				<header className="w-full sticky top-0 z-30 bg-white/70 dark:bg-gray-900/70 backdrop-blur-lg border-b border-transparent shadow-[0_4px_32px_0_rgba(99,102,241,0.08)]">
-						<div className="max-w-4xl mx-auto flex flex-col items-center justify-center px-6 py-4 gap-2">
-							<div className="flex items-center justify-between w-full">
-								<span className="text-2xl font-extrabold bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent tracking-tight">CareerCanvas</span>
-								<span className="flex items-center gap-2 text-base text-gray-700 dark:text-gray-200">
-									<FaClock className="text-blue-500" /> 3–9 min
-									<FaUserTie className="ml-6 text-pink-500" /> 1000+ careers
-									<FaStar className="ml-6 text-yellow-400" /> 4.9/5
-								</span>
-							</div>
-							{/* Animated progress circles */}
-							<div className="flex items-center gap-2 mt-2">
-								{Array.from({ length: questions.length }).map((_, i) => (
-									<motion.div
-										key={i}
-										className={`w-4 h-4 rounded-full border-2 ${i <= step ? "bg-gradient-to-r from-blue-600 to-pink-500 border-blue-400 animate-glow" : "bg-gray-200 dark:bg-gray-800 border-gray-300 dark:border-gray-700"}`}
-										animate={i === step ? { scale: [1, 1.3, 1] } : { scale: 1 }}
-										transition={{ duration: 0.6, repeat: i === step ? Infinity : 0, repeatType: "reverse", ease: "easeInOut" }}
-									/>
-								))}
-							</div>
+					<div className="max-w-4xl mx-auto flex flex-col items-center justify-center px-2 sm:px-6 py-3 sm:py-4 gap-2">
+						<div className="flex flex-col sm:flex-row items-center justify-between w-full gap-2 sm:gap-0">
+							<span className="text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent tracking-tight">CareerCanvas</span>
+							<span className="flex flex-wrap items-center gap-2 text-sm sm:text-base text-gray-700 dark:text-gray-200">
+								<FaClock className="text-blue-500" /> 3–9 min
+								<FaUserTie className="sm:ml-6 text-pink-500" /> 1000+ careers
+								<FaStar className="sm:ml-6 text-yellow-400" /> 4.9/5
+							</span>
 						</div>
-					</header>
+						{/* Animated progress circles */}
+						<div className="flex items-center gap-1 sm:gap-2 mt-2">
+							{Array.from({ length: questions.length }).map((_, i) => (
+								<motion.div
+									key={i}
+									className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 ${i <= step ? 'bg-gradient-to-r from-blue-600 to-pink-500 border-blue-400 animate-glow' : 'bg-gray-200 dark:bg-gray-800 border-gray-300 dark:border-gray-700'}`}
+									animate={i === step ? { scale: [1, 1.3, 1] } : { scale: 1 }}
+									transition={{ duration: 0.6, repeat: i === step ? Infinity : 0, repeatType: 'reverse', ease: 'easeInOut' }}
+								/>
+							))}
+						</div>
+					</div>
+				</header>
 
-
-							{/* Main animated question card or result screen */}
-									<section className="flex-1 w-full flex flex-col items-center justify-center py-16 px-4">
-										<div className="max-w-xl w-full mx-auto">
-											{!isFinished ? (
-												<>
-													{/* Question indicator above icon */}
-													<div className="flex flex-col items-center justify-center mb-4 gap-0 relative">
-														<span className="inline-flex items-center gap-2 px-5 py-1 rounded-full bg-gradient-to-r from-blue-100 to-pink-100 dark:from-blue-900 dark:to-pink-900 text-blue-700 dark:text-pink-300 font-semibold text-lg shadow animate-gradient-x z-20" style={{ fontWeight: 700 }}>
-															<FaLightbulb className="text-yellow-400 animate-pulse" />
-															<span className="text-blue-700 dark:text-pink-200">Question {step + 1} of {questions.length}</span>
-														</span>
-													</div>
-													<AnimatePresence mode="wait">
-														<motion.div
-															key={step}
-															initial={{ opacity: 0, y: 40, scale: 0.96, rotateY: 20 }}
-															animate={{ opacity: 1, y: 0, scale: 1, rotateY: 0 }}
-															exit={{ opacity: 0, y: -40, scale: 0.96, rotateY: -20 }}
-															transition={{ duration: 0.6, type: "spring", bounce: 0.3 }}
-															className="relative z-10 w-full rounded-3xl bg-white/90 dark:bg-gray-900/90 shadow-2xl backdrop-blur-lg px-8 py-12 flex flex-col items-center border border-white/40 dark:border-gray-800/60"
-														>
-															<motion.h2
-																initial={{ opacity: 0, y: 20 }}
-																animate={{ opacity: 1, y: 0 }}
-																transition={{ delay: 0.2, duration: 0.7 }}
-																className="text-2xl sm:text-3xl font-extrabold mb-8 text-center bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient-x"
-															>
-																{q.text}
-															</motion.h2>
-															<div className="flex flex-col gap-6 w-full mt-4">
-																{q.options.map((opt, i) => (
-																	<motion.button
-																		key={opt.value}
-																		whileHover={{ scale: 1.08, boxShadow: opt.value === "unsure" ? "0 0 0 2px #a21caf55" : "0 0 24px #2563eb55, 0 0 48px #ec489955" }}
-																		whileTap={{ scale: 0.97 }}
-																		onClick={() => handleAnswer(i === 0 ? "a" : i === 1 ? "b" : "unsure")}
-																		className={`w-full flex items-center gap-3 px-6 py-5 rounded-xl font-semibold text-lg shadow-lg border-2 border-white/30 dark:border-gray-800/40 backdrop-blur-lg transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-pink-400
-																			${opt.value === "unsure"
-																				? "bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 text-gray-500 border-2 border-pink-300 dark:border-pink-700 relative group"
-																				: "bg-gradient-to-r from-blue-600 to-pink-500 text-white animate-glow"}
-																		`}
-																	>
-																		{opt.value === "unsure" ? <FaRegQuestionCircle className="text-2xl" /> : <FaCheckCircle className="text-2xl" />}
-																		{opt.label}
-																		{/* Tooltip for Can't Decide */}
-																		{opt.value === "unsure" && (
-																			<span className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 bg-pink-500 text-white text-xs rounded px-2 py-1 shadow transition-opacity duration-200 pointer-events-none">
-																				Choose if you feel unsure
-																			</span>
-																		)}
-																	</motion.button>
-																))}
-															</div>
-														</motion.div>
-													</AnimatePresence>
-												</>
-											) : (
-											  <div className="flex flex-col items-center justify-center w-full">
+				{/* Main animated question card or result screen */}
+				<section className="flex-1 w-full flex flex-col items-center justify-center py-8 sm:py-16 px-2 sm:px-4">
+					<div className="max-w-xs sm:max-w-xl w-full mx-auto">
+						{!isFinished ? (
+							<>
+								{/* Question indicator above icon */}
+								<div className="flex flex-col items-center justify-center mb-4 gap-0 relative">
+									<span className="inline-flex items-center gap-2 px-3 sm:px-5 py-1 rounded-full bg-gradient-to-r from-blue-100 to-pink-100 dark:from-blue-900 dark:to-pink-900 text-blue-700 dark:text-pink-300 font-semibold text-base sm:text-lg shadow animate-gradient-x z-20" style={{ fontWeight: 700 }}>
+										<FaLightbulb className="text-yellow-400 animate-pulse" />
+										<span className="text-blue-700 dark:text-pink-200">Question {step + 1} of {questions.length}</span>
+									</span>
+								</div>
+								<AnimatePresence mode="wait">
+									<motion.div
+										key={step}
+										initial={{ opacity: 0, y: 40, scale: 0.96, rotateY: 20 }}
+										animate={{ opacity: 1, y: 0, scale: 1, rotateY: 0 }}
+										exit={{ opacity: 0, y: -40, scale: 0.96, rotateY: -20 }}
+										transition={{ duration: 0.6, type: 'spring', bounce: 0.3 }}
+										className="relative z-10 w-full rounded-2xl sm:rounded-3xl bg-white/90 dark:bg-gray-900/90 shadow-2xl backdrop-blur-lg px-3 sm:px-8 py-8 sm:py-12 flex flex-col items-center border border-white/40 dark:border-gray-800/60"
+									>
+										<motion.h2
+											initial={{ opacity: 0, y: 20 }}
+											animate={{ opacity: 1, y: 0 }}
+											transition={{ delay: 0.2, duration: 0.7 }}
+											className="text-lg sm:text-2xl md:text-3xl font-extrabold mb-6 sm:mb-8 text-center bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient-x"
+										>
+											{q.text}
+										</motion.h2>
+										<div className="flex flex-col gap-4 sm:gap-6 w-full mt-2 sm:mt-4">
+											{q.options.map((opt, i) => (
 												<motion.button
-												  whileHover={{ scale: 1.05 }}
-												  whileTap={{ scale: 0.97 }}
-												  onClick={handleSeeResult}
-												  className="mt-8 px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-pink-500 text-white font-bold text-xl shadow-lg animate-glow focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-pink-400"
+													key={opt.value}
+													whileHover={{ scale: 1.08, boxShadow: opt.value === 'unsure' ? '0 0 0 2px #a21caf55' : '0 0 24px #2563eb55, 0 0 48px #ec489955' }}
+													whileTap={{ scale: 0.97 }}
+													onClick={() => handleAnswer(i === 0 ? 'a' : i === 1 ? 'b' : 'unsure')}
+													className={`w-full flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-4 sm:py-5 rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg shadow-lg border-2 border-white/30 dark:border-gray-800/40 backdrop-blur-lg transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-pink-400
+														${opt.value === 'unsure'
+															? 'bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 text-gray-500 border-2 border-pink-300 dark:border-pink-700 relative group'
+															: 'bg-gradient-to-r from-blue-600 to-pink-500 text-white animate-glow'}
+													`}
 												>
-												  See the Result
+													{opt.value === 'unsure' ? <FaRegQuestionCircle className="text-xl sm:text-2xl" /> : <FaCheckCircle className="text-xl sm:text-2xl" />}
+													{opt.label}
+													{/* Tooltip for Can't Decide */}
+													{opt.value === 'unsure' && (
+														<span className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 bg-pink-500 text-white text-xs rounded px-2 py-1 shadow transition-opacity duration-200 pointer-events-none">
+															Choose if you feel unsure
+														</span>
+													)}
 												</motion.button>
-											  </div>
-											)}
+											))}
 										</div>
-									</section>
+									</motion.div>
+								</AnimatePresence>
+							</>
+						) : (
+							<div className="flex flex-col items-center justify-center w-full">
+								<motion.button
+									whileHover={{ scale: 1.05 }}
+									whileTap={{ scale: 0.97 }}
+									onClick={handleSeeResult}
+									className="mt-8 px-6 sm:px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-pink-500 text-white font-bold text-lg sm:text-xl shadow-lg animate-glow focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-pink-400"
+								>
+									See the Result
+								</motion.button>
+							</div>
+						)}
+					</div>
+				</section>
 
-
-			{/* Trust badges, reviews, and footer */}
-			<footer className="w-full max-w-4xl mx-auto flex flex-col items-center gap-6 py-10">
-				<div className="flex flex-wrap gap-6 items-center justify-center">
-					<span className="flex items-center gap-2 text-gray-600 dark:text-gray-300 text-base"><FaUserTie className="text-blue-500" /> Trusted by 500+ companies</span>
-					<span className="flex items-center gap-2 text-gray-600 dark:text-gray-300 text-base"><FaStar className="text-yellow-400" /> 4,494 Reviews</span>
-				</div>
-				<div className="text-sm text-gray-500 dark:text-gray-400 text-center">&copy; {new Date().getFullYear()} CareerCanvas. All rights reserved.</div>
-			</footer>
-		</main>
+				{/* Trust badges, reviews, and footer */}
+				<footer className="w-full max-w-xs sm:max-w-4xl mx-auto flex flex-col items-center gap-4 sm:gap-6 py-6 sm:py-10 px-2">
+					<div className="flex flex-wrap gap-4 sm:gap-6 items-center justify-center">
+						<span className="flex items-center gap-2 text-gray-600 dark:text-gray-300 text-sm sm:text-base"><FaUserTie className="text-blue-500" /> Trusted by 500+ companies</span>
+						<span className="flex items-center gap-2 text-gray-600 dark:text-gray-300 text-sm sm:text-base"><FaStar className="text-yellow-400" /> 4,494 Reviews</span>
+					</div>
+					<div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 text-center">&copy; {new Date().getFullYear()} CareerCanvas. All rights reserved.</div>
+				</footer>
+			</main>
 		);
-	
 	}
-

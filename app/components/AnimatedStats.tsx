@@ -11,31 +11,18 @@ const stats = [
 
 export default function AnimatedStats() {
   return (
-    <section
-      className="relative w-full py-20 px-4 flex flex-col items-center overflow-hidden"
-      id="stats"
-    >
-      {/* Floating animated glass background */}
-      <motion.div
-        aria-hidden
-        initial={{ opacity: 0, scale: 0.7, y: 60 }}
-        whileInView={{ opacity: 0.7, scale: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.2, type: "spring" }}
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[320px] bg-gradient-to-tr from-blue-400/30 via-pink-400/20 to-purple-400/30 rounded-3xl blur-2xl pointer-events-none z-0"
-        style={{ filter: "blur(60px)" }}
-      />
-      <div className="relative z-10 max-w-5xl w-full grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+    <section className="w-full flex flex-col items-center justify-center py-20 px-4">
+      <div className="max-w-5xl w-full grid grid-cols-2 sm:grid-cols-4 gap-12">
         {stats.map((stat, i) => {
           const Icon = stat.icon;
           return (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 40, scale: 0.85 }}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.18, duration: 0.8, type: "spring", bounce: 0.4 }}
-              className="flex flex-col items-center justify-center bg-white/60 dark:bg-gray-900/60 rounded-2xl shadow-xl backdrop-blur-lg border border-white/30 dark:border-gray-800/40 p-6 sm:p-8 group hover:scale-105 hover:shadow-2xl transition-all duration-300"
+              transition={{ delay: i * 0.18, duration: 0.8, type: "spring", bounce: 0.3 }}
+              className="flex flex-col items-center justify-center bg-white/90 dark:bg-gray-900/90 rounded-3xl shadow-xl p-10 border border-white/40 dark:border-gray-800/60 group hover:scale-105 hover:shadow-2xl transition-all duration-300"
               whileHover={{ scale: 1.08 }}
             >
               <motion.div
